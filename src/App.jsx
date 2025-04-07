@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import OtpInput from "./components/OtpInput";
+import OtpInput from "./Components/OtpInput";
 import "./App.css";
 
 function App() {
