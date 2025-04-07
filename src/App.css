@@ -1,47 +1,114 @@
-/* App.css */
-
+/* Reset + base styles */
 body {
   margin: 0;
-  padding: 0;
   font-family: "Inter", sans-serif;
-  background: #f0f2f5;
-  height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .App {
+  min-height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  transition: all 0.3s ease;
+}
+
+/* Form layout */
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+  max-width: 500px;
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
   text-align: center;
 }
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
+.toggle-theme {
+  background-color: #eaeaea;
   color: #333;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
-.otp-container {
+.toggle-theme:hover {
+  background-color: #ccc;
+}
+
+/* OTP input styling */
+.otp-input-wrapper {
   display: flex;
-  gap: 15px;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 400px;
 }
 
 .otp-input {
-  width: 60px;
+  flex: 1;
+  max-width: 60px;
   height: 60px;
-  font-size: 32px;
+  font-size: 28px;
   text-align: center;
-  border: 2px solid #dcdcdc;
+  border: 2px solid #ccc;
   border-radius: 10px;
-  transition: 0.2s all ease-in-out;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  background: #fff;
   outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .otp-input:focus {
-  border-color: #4a90e2;
-  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+  border-color: #007bff;
+  box-shadow: 0 0 6px rgba(0, 123, 255, 0.3);
+}
+
+/* Dark mode */
+body.dark,
+.App.dark {
+  background-color: #111;
+  color: #e0e0e0;
+}
+
+.App.dark .otp-form {
+  background-color: #1c1c1c;
+}
+
+.App.dark .toggle-theme {
+  background-color: #333;
+  color: #eee;
+}
+
+.App.dark .toggle-theme:hover {
+  background-color: #444;
+}
+
+.App.dark .otp-input {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 2px solid #444;
+}
+
+.App.dark .otp-input:focus {
+  border-color: #90caf9;
+  box-shadow: 0 0 6px rgba(144, 202, 249, 0.4);
+}
+
+.otp-form {
+  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
 }

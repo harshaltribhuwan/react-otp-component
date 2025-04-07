@@ -1,52 +1,36 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
+import { motion } from "framer-motion";
+import OtpInput from "./components/OtpInput";
 import "./App.css";
 
-const otp_length = 5;
+function App() {
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
-export default function App() {
-  const [inputArr, setInputArr] = useState(new Array(otp_length).fill(""));
-  const inputRef = useRef([]);
-
-  useEffect(() => {
-    inputRef.current[0]?.focus();
-  }, []);
-
-  const handleKeyDown = (e, index) => {
-    if (e.key === "Backspace" && !e.target.value) {
-      inputRef.current[index - 1]?.focus();
-    }
-  };
-
-  const handleInputChange = (e, index) => {
-    const value = e.target.value;
-    if (isNaN(value)) return;
-
-    const newArray = [...inputArr];
-    newArray[index] = value.slice(-1);
-    setInputArr(newArray);
-
-    if (value && index < otp_length - 1) {
-      inputRef.current[index + 1]?.focus();
-    }
+  const toggleTheme = () => {
+    document.body.classList.toggle("dark");
+    setIsDarkMode((prev) => !prev);
   };
 
   return (
-    <div className="App">
-      <h1>Please enter your OTP</h1>
-      <div className="otp-container">
-        {inputArr.map((val, index) => (
-          <input
-            key={index}
-            type="text"
-            maxLength={1}
-            value={val}
-            onKeyDown={(e) => handleKeyDown(e, index)}
-            onChange={(e) => handleInputChange(e, index)}
-            ref={(el) => (inputRef.current[index] = el)}
-            className="otp-input"
-          />
-        ))}
+    <motion.div
+      className={`App ${isDarkMode ? "dark" : ""}`}
+      animate={{
+        backgroundColor: isDarkMode ? "#111" : "#fdfdfd",
+        color: isDarkMode ? "#e0e0e0" : "#1a1a1a",
+      }}
+      transition={{ duration: 0.5 }}
+    >
+      <div className="otp-form">
+        <h1 className="title">🔐 Verify your OTP</h1>
+
+        <OtpInput otpLength={5} />
+
+        <button className="toggle-theme" onClick={toggleTheme}>
+          {isDarkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
+
+export default App;
