@@ -14,7 +14,6 @@ A beautifully animated, responsive OTP input component with dark/light theme sup
 - 💾 **Theme state persists** even after refreshing the page  
 
 ---
----
 
 ## 🚀 Getting Started
 
