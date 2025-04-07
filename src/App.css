@@ -1,4 +1,3 @@
-/* Reset + base styles */
 body {
   margin: 0;
   font-family: "Inter", sans-serif;
@@ -15,7 +14,6 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Form layout */
 .otp-form {
   display: flex;
   flex-direction: column;
@@ -25,7 +23,7 @@ body {
   max-width: 500px;
   padding: 40px 30px;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   background-color: white;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -51,7 +49,6 @@ body {
   background-color: #ccc;
 }
 
-/* OTP input styling */
 .otp-input-wrapper {
   display: flex;
   justify-content: center;
@@ -87,6 +84,8 @@ body.dark,
 
 .App.dark .otp-form {
   background-color: #1c1c1c;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.06),
+    0 0 8px rgba(255, 255, 255, 0.03);
 }
 
 .App.dark .toggle-theme {
@@ -109,6 +108,46 @@ body.dark,
   box-shadow: 0 0 6px rgba(144, 202, 249, 0.4);
 }
 
-.otp-form {
-  transition: background-color 0.4s ease, color 0.4s ease, box-shadow 0.4s ease;
+/* -----------------------------
+   🧠 MEDIA QUERIES FOR MOBILE
+----------------------------- */
+@media (max-width: 480px) {
+  .App {
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .otp-form {
+    width: 100%;
+    max-width: 320px;
+    padding: 20px 16px;
+    gap: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+  }
+
+  .toggle-theme {
+    padding: 10px 16px;
+    font-size: 13px;
+    border-radius: 6px;
+  }
+
+  .otp-input-wrapper {
+    gap: 10px;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .otp-input {
+    max-width: 44px;
+    height: 44px;
+    font-size: 20px;
+    border-radius: 6px;
+  }
 }
