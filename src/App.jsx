@@ -10,8 +10,8 @@ function App() {
   const initialRef = useRef(true);
 
   useEffect(() => {
-    const result = JSON.parse(localStorage.getItem("theme"));
-    setIsDarkMode(result ?? false);
+    const result = localStorage?.getItem("theme");
+    setIsDarkMode(result === "dark");
 
     setTimeout(() => {
       setShowContent(true);
